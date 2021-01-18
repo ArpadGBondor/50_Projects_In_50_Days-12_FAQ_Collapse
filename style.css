@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
 
 :root {
-  --text-fade-time: 0.3s;
-  --container-shrink-time: 0.5s;
+  --text-fade-time: 0.5s;
+  --container-shrink-time: 1s;
 }
 
 * {
@@ -33,31 +33,41 @@ h1 {
   position: relative;
   overflow: hidden;
   transition: 0.3s ease-in-out;
+  transition: background-color var(--container-shrink-time) ease-in-out var(--text-fade-time),
+    box-shadow var(--container-shrink-time) ease-in-out var(--text-fade-time);
 }
 
 .faq.active {
   background-color: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color var(--container-shrink-time) ease-in-out, box-shadow var(--container-shrink-time) ease-in-out;
 }
 
-.faq.active::before,
-.faq.active::after {
+.faq::before,
+.faq::after {
   content: '\f075';
   font-family: 'Font Awesome 5 Free';
   color: #2acc71;
   font-size: 7rem;
   position: absolute;
-  opacity: 0.2;
+  opacity: 0;
   top: 20px;
   left: 20px;
   z-index: 0;
+  transition: opacity var(--container-shrink-time) ease-in-out var(--text-fade-time);
 }
 
-.faq.active::before {
+.faq::before {
   color: #3498db;
   top: -10px;
   left: -30px;
   transform: rotateY(180deg);
+}
+
+.faq.active::before,
+.faq.active::after {
+  opacity: 0.2;
+  transition: opacity var(--container-shrink-time) ease-in-out;
 }
 
 .faq-title {
