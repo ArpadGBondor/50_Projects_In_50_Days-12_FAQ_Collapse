@@ -2,3 +2,5 @@
 
 ## Udemy - 50 Projects In 50 Days - HTML, CSS & JavaScript
 ### Section 13: Day 12 - FAQ Collapse
+
+I animated the opening of the FAQs.
